@@ -18,7 +18,7 @@ Files:
 
 - `lists.json`: raw answer of `/service/lists?format=json` (name, title, description, type, size, dateCreated, timestamp, tags, authorized, ...).
 - `lists.tsv`: one row per list (name, type, size, dateCreated, title, description; tabs and newlines in the description collapsed to spaces).
-- `members/<list name>.tsv`: members of each list, with a header row. The file name is the list name with `/` and whitespace replaced by `_` (names contain `:`, which some file systems do not allow). Gene lists: `Gene.primaryIdentifier`, `Gene.symbol`, `Gene.secondaryIdentifier`, `Gene.organism.name`. Protein lists: `Protein.primaryAccession`, `primaryIdentifier`, `symbol`, `name`, `organism.name`. SNP list: `SNP.primaryIdentifier`, `secondaryIdentifier`, `symbol`, `name`, `organism.name`. Empty values appear as `""`, as returned by the service.
+- `members/<list name>.tsv`: members of each list, with a header row. The file name is the list name with `/` and whitespace replaced by `_` and `:` replaced by `__` (a colon is not allowed in Windows file names); `INDEX.tsv` maps file names back to list names. Gene lists: `Gene.primaryIdentifier`, `Gene.symbol`, `Gene.secondaryIdentifier`, `Gene.organism.name`. Protein lists: `Protein.primaryAccession`, `primaryIdentifier`, `symbol`, `name`, `organism.name`. SNP list: `SNP.primaryIdentifier`, `secondaryIdentifier`, `symbol`, `name`, `organism.name`. Empty values appear as `""`, as returned by the service.
 - `members/INDEX.tsv`: file name, list name, rows exported.
 - `export.log`: every request and its row count, plus any size mismatch. Member queries are POSTs to `/service/query/results`; the list name is in the request body, so it is logged beside the URL.
 
